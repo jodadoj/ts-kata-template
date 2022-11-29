@@ -1,31 +1,31 @@
 function validBraces(braces:string){
-    let nextChar:string[] = [];
-    for (let char of braces){
-      //console.log(char);
-      //console.log(nextChar);
+    let nextBrace:string[] = []; //Throughout we keep track of our closing brackets
+    for (let char of braces){ 
+      //if opening a bracket then remember to close it in the correct order (LIFO)
       if (char==="{") {
-        nextChar.unshift("}");
+        nextBrace.unshift("}"); //by setting the first element of nextBrace to the correct character
       }
       if (char==="(") {
-        nextChar.unshift(")");
+        nextBrace.unshift(")");
       }
       if (char==="[") {
-        nextChar.unshift("]");
+        nextBrace.unshift("]");
       }
-      if (char!=="[" && 
-          char!=="(" && 
-          char!=="{" && 
-          char!==nextChar[0]) {
-        return false;
+      if (char=="]" || char==")" || char=="}"){ //then if closing a bracket
+        if (char!==nextBrace[0]) { //and closing the correct set
+          return false;
+        }
       }
-      if (char===nextChar[0]){
-        nextChar.shift();
-        //console.log(nextChar);
+      //if we've found the correct end to a set of brackets
+      if (char===nextBrace[0]){ 
+        nextBrace.shift(); //remove it from the stack
       }
     }
-    if (nextChar.length===0){
+    //once we've iterated through all the elements
+    if (nextBrace.length===0){ //if there's no remaining open brackets
       return true;
-    }
+    } 
+    //otherwise we were expecting a bracket to close and there's an error
     return false;
   }
 

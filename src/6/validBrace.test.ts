@@ -11,6 +11,7 @@ test("Do the braces input in the order presented create a valid series", () => {
     const brackets08 = "(((({{";
     const brackets09 = "}}]]))}])";
     const brackets10 = "";
+    const brackets11 = "Hello world";
 
 
     expect(validBraces(brackets01)).toEqual(false);
@@ -23,6 +24,7 @@ test("Do the braces input in the order presented create a valid series", () => {
     expect(validBraces(brackets08)).toEqual(false);
     expect(validBraces(brackets09)).toEqual(false);
     expect(validBraces(brackets10)).toEqual(true);
+    expect(validBraces(brackets11)).toEqual(true);
 
 }
 );
