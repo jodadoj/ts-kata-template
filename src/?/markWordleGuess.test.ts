@@ -12,5 +12,6 @@ test("Marks wordle guesses", () => {
     expect(markWordleGuess(g1, w1)).toStrictEqual([{ state: "W" }, { state: "W" }, { state: "C" }, { state: "W" }, { state: "W" }]);
     expect(markWordleGuess(g2, w2)).toStrictEqual([{ state: "C" }, { state: "W" }, { state: "C" }, { state: "W" }, { state: "WP" }]);
     expect(markWordleGuess(g3, w3)).toStrictEqual([{ state: "WP" }, { state: "C" }, { state: "W" }, { state: "W" }, { state: "WP" }]);
+    expect(markWordleGuess(w2, g2)).toStrictEqual([{ state: "C" }, { state: "WP" }, { state: "C" }, { state: "W" }, { state: "W" }]);
 
 })

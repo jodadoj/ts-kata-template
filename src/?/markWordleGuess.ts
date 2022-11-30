@@ -17,13 +17,14 @@ function markWordleGuess(guess: string, hiddenTarget: string):MarkedGuess{
             memory[char] -=1; //determined the position of one of the characters so no longer looking for it's position
         }
     }
-    console.log(memory);
+    console.log(memory); //log the character's we're looking for
     for (let index = 0; index<5; index++){ //second loop to check for correctly positioned guesses
         const char = guessArr[index];
         if (!memory[char]){ //if we're not looking for this letter
-            memory[char] = 0; //set a new property for it to equal 0
+            memory[char] = 0; //set a new property for it to equal 0 to prevent an error, probs unnecessary
         } 
         console.log(char, memory[char], hiddenTarget.includes(char), guessArr[index]!==targetArr[index], memory[char] > 0, (guessArr[index]!==targetArr[index] && hiddenTarget.includes(char) && memory[char] > 0));
+        //above checks where the condition breaks for testing
         if (guessArr[index]!==targetArr[index] //if the letter is not the correct guess
             && hiddenTarget.includes(char) //but is inside the words
             && memory[char] > 0){ //and we're still expecting another of this character
@@ -31,6 +32,6 @@ function markWordleGuess(guess: string, hiddenTarget: string):MarkedGuess{
         }
         memory[char] -= 1; //expect one fewer of this character
     }
-    return result;
+    return result; //returns with alterations for Correct and Wrongly Positioned characters
 }
 export default markWordleGuess;
