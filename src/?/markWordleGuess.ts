@@ -4,7 +4,7 @@ export type MarkedGuess = [MarkedChar, MarkedChar, MarkedChar, MarkedChar, Marke
 function markWordleGuess(guess: string, hiddenTarget: string):MarkedGuess{
     const guessArr:string[] = [...guess]; //split into characters
     const targetArr:string[] = [...hiddenTarget];
-    let memory:any = {}; //define empty array, think it's any at this point
+    let memory:any = {}; //define empty object, think it's any at this point
     let result:MarkedGuess = [{ state: "W" }, { state: "W" }, { state: "W" }, { state: "W" }, { state: "W" }]
     for (let index = 0; index<5; index++){ //check for correct positions
         const char = targetArr[index]; //defined char to make easier to read with below
